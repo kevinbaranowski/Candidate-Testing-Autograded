@@ -49,14 +49,23 @@ function askQuestion() {
 function gradeQuiz(candidateAnswers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
+  let numberOfCorrectAnswers = 0;
+  const numberOfQuizQuestions = questions.length;
   for (let i = 0; i < candidateAnswers.length; i++) {
-    console.log(`Candidate's answer: ${candidateAnswers[i]} Correct answer: ${correctAnswers[i]}`)
+    console.log(`Candidate's answer: ${candidateAnswers[i]} Correct answer: ${correctAnswers[i]}`);
+    if (candidateAnswers[i].toUpperCase() === correctAnswers[i].toUpperCase()) {
+      numberOfCorrectAnswers++
+    }
   }
 
-
   let grade;  //TODO 3.2 use this variable to calculate the candidates score.
-
-
+  grade = (numberOfCorrectAnswers / numberOfQuizQuestions) * 100
+  if (grade >= 80) {
+    console.log(`You earned a ${grade}% on the quiz! Nice work!`)
+  } else {
+    console.log(`You earned a ${grade}% on the quiz! Better luck next time!`)
+  }
+  
   return grade;
 }
 
